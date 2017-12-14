@@ -32,13 +32,13 @@
 通过repo init命令的-b参数, 选择需要下载的分支。
 通过repo sync命令同步远程代码: 
 
-    $ repo init -u https://github.com/FlymeOS/manifest.git -b marshmallow-6.0
+    $ repo init -u git@github.com:nian0114/flyme_manifest.git -b marshmallow-6.0
     $ repo sync -c -j4
 
 如果连接一直失败或下载代码过慢，则使用以下命令:
 
     $ repo init --repo-url git://github.com/FlymeOS/repo.git \
-                -u https://github.com/FlymeOS/manifest.git \
+                -u git@github.com:nian0114/flyme_manifest.git \
                 -b marshmallow-6.0 --no-repo-verify
     $ repo sync --no-clone-bundle -c -j4
 

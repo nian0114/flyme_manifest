@@ -5,14 +5,12 @@
 
   <default revision="refs/heads/marshmallow-6.0"
            remote="origin"
+	   sync-c="true"
            sync-j="4" />
 
-  <project path="manifest" name="FlymeOS/manifest" />
-  <project path="tutorials" name="FlymeOS/tutorials" />
-  <project path="plugins" name="FlymeOS/plugins" />
-  <project path="build" name="FlymeOS/build" />
-  <project path="tools" name="FlymeOS/tools" />
-  <project path="flyme/release" name="FlymeOS/flyme-release"/>
-  <project path="flyme/overlay" name="FlymeOS/flyme-overlay" />
-  <project path="devices/base" name="FlymeOS/devices-base" />
+  <project path="build" name="nian0114/flyme6_build" revision="marshmallow-6.0" />
+  <project path="tools" name="nian0114/flyme6_tools" revision="marshmallow-6.0" />
+  <project path="flyme/release" name="nian0114/flyme6_release"/>
+  <project path="flyme/overlay" name="nian0114/flyme6_overlay" />
+  <project path="devices/base" name="nian0114/flyme6_base" />
 </manifest>
