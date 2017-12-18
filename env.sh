@@ -8,9 +8,10 @@ git config --global user.email "268078545@qq.com"
 git config --global user.name "nian0114"
 
 mkdir ~/bin
-echo ' PATH=~/bin:$PATH' >> ~/.bashrc
+echo 'PATH=~/bin:$PATH' >> ~/.bashrc
 curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
+PATH=~/bin:$PATH
 
 mkdir -p flyme6
 cd flyme6
