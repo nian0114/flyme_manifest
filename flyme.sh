@@ -244,7 +244,7 @@ function fullota(){
 
 function ota(){
 	cd ${source_dir}/OTA
-	mv $1-target-files.zip $1-last-target-files.zip
+  cp /mnt/cos/target_files/$1-target-files.zip ./$1-last-target-files.zip
 	mv ../devices/$1/out/target_fil*.zip $1-target-files.zip
 	if [ ${SUPPORT_LITTLERABBIT} == "1" ];then
 		../build/tools/releasetools/ota_from_target_files.py -k ../build/security/testkey -i $1-last-target-files.zip $1-target-files.zip ${ota_dir}/$1/${version}/ota-$1-${version}.zip
@@ -253,6 +253,9 @@ function ota(){
 	else
 		../build/tools/releasetools/ota_from_target_files.py -k ../build/security/testkey -i $1-last-target-files.zip $1-target-files.zip ${out_dir}/${version}/$1/ota-$1-${version}.zip
 	fi
+  cd /mnt/cos/target_files
+  mv $1-target-files.zip $1-last-target-files.zip
+  mv ${source_dir}/OTA/$1-target-files.zip .
   cd ${source_dir}
 }
 
