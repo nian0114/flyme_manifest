@@ -1,4 +1,4 @@
-source_dir="/home/nian/flyme6"
+source_dir="~/flyme6"
 
 function untar() {
 	rm -rf $source_dir/devices/$1/vendor
