@@ -16,13 +16,13 @@
   <project path="flyme/release" name="nian0114/flyme6_release"/>
   <project path="flyme/overlay" name="nian0114/flyme6_overlay" />
   <project path="devices/base" name="nian0114/flyme6_base" />
-  <project path="devices/hero2qlte" name="imcsg/flyme_source" remote="gitee" revision="hero2qlte"/>
-  <project path="devices/hero2qlte_free" name="imcsg/flyme_source" remote="gitee" revision="hero2qlte_free"/>
-  <project path="devices/herolte" name="imcsg/flyme_source" remote="gitee" revision="herolte"/>
-  <project path="devices/herolte_free" name="imcsg/flyme_source" remote="gitee" revision="herolte_free"/>
-  <project path="devices/lithium" name="imcsg/flyme_source" remote="gitee" revision="lithium"/>
-  <project path="devices/natrium" name="imcsg/flyme_source" remote="gitee" revision="natrium"/>
-  <project path="devices/nx531j_cm" name="imcsg/flyme_source" remote="gitee" revision="nx531j_cm"/>
-  <project path="devices/nx531j_nubia" name="imcsg/flyme_source" remote="gitee" revision="nx531j_nubia"/>
-  <project path="devices/scorpio" name="imcsg/flyme_source" remote="gitee" revision="scorpio"/>
+  <project path="devices/hero2qlte" name="nian0114/flyme_source" revision="hero2qlte"/>
+  <project path="devices/hero2qlte_free" name="nian0114/flyme_source" revision="hero2qlte_free"/>
+  <project path="devices/herolte" name="nian0114/flyme_source" revision="herolte"/>
+  <project path="devices/herolte_free" name="nian0114/flyme_source" revision="herolte_free"/>
+  <project path="devices/lithium" name="nian0114/flyme_source" revision="lithium"/>
+  <project path="devices/natrium" name="nian0114/flyme_source" revision="natrium"/>
+  <project path="devices/nx531j_cm" name="nian0114/flyme_source" revision="nx531j_cm"/>
+  <project path="devices/nx531j_nubia" name="nian0114/flyme_source" revision="nx531j_nubia"/>
+  <project path="devices/scorpio" name="nian0114/flyme_source" revision="scorpio"/>
 </manifest>
