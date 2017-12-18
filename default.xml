@@ -24,4 +24,5 @@
   <project path="devices/nx531j_cm" name="nian0114/flyme_source" revision="nx531j_cm"/>
   <project path="devices/nx531j_nubia" name="nian0114/flyme_source" revision="nx531j_nubia"/>
   <project path="devices/scorpio" name="nian0114/flyme_source" revision="scorpio"/>
+  <project path="third-app" name="nian0114/flyme6_third-app" revision="master"/>
 </manifest>
