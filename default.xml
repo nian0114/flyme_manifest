@@ -8,14 +8,13 @@
 
   <default revision="refs/heads/marshmallow-6.0"
            remote="origin"
-	   sync-c="true"
            sync-j="4" />
 
   <project path="build" name="nian0114/flyme6_build" revision="marshmallow-6.0" />
   <project path="tools" name="nian0114/flyme6_tools" revision="marshmallow-6.0" />
-  <project path="flyme/release" name="nian0114/flyme6_release"/>
-  <project path="flyme/overlay" name="nian0114/flyme6_overlay" />
-  <project path="devices/base" name="nian0114/flyme6_base" />
+  <project path="flyme/release" name="nian0114/flyme6_release" sync-c="true"/>
+  <project path="flyme/overlay" name="nian0114/flyme6_overlay" sync-c="true"/>
+  <project path="devices/base" name="nian0114/flyme6_base" sync-c="true"/>
   <project path="devices/hero2qlte" name="nian0114/flyme_source" revision="hero2qlte"/>
   <project path="devices/hero2qlte_free" name="nian0114/flyme_source" revision="hero2qlte_free"/>
   <project path="devices/herolte" name="nian0114/flyme_source" revision="herolte"/>
