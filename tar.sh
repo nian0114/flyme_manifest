@@ -1,8 +1,9 @@
-source_dir="~/flyme6"
+user=`whoami`
+source_dir="/home/$user/flyme6"
 
 function untar() {
 	rm -rf $source_dir/devices/$1/vendor
-	tar xvf $1-vendor.tar -C $source_dir/devices/$1/
+	tar xvf $1-vendor.tar -C "$source_dir/devices/$1/"
 	rm -rf  $1-vendor.tar
 }
 
