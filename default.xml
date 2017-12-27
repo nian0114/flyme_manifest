@@ -10,8 +10,8 @@
            remote="origin"
            sync-j="4" />
 
-  <project path="build" name="nian0114/flyme6_build" revision="mac" />
-  <project path="tools" name="nian0114/flyme6_tools" revision="mac" />
+  <project path="build" name="nian0114/flyme6_build" revision="marshmallow-6.0" />
+  <project path="tools" name="nian0114/flyme6_tools" revision="marshmallow-6.0" />
   <project path="flyme/release" name="FlymeOS/flyme-release" sync-c="true"/>
   <project path="flyme/overlay" name="FlymeOS/flyme-overlay" sync-c="true"/>
   <project path="devices/base" name="FlymeOS/devices-base" sync-c="true"/>
