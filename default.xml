@@ -15,7 +15,7 @@
   <project path="flyme/release" name="FlymeOS/flyme-release" sync-c="true" />
   <project path="flyme/overlay" name="FlymeOS/flyme-overlay" sync-c="true" />
   <project path="devices/base" name="FlymeOS/devices-base" sync-c="true" />
-  <project path="devices/heroltexx" name="nian0114/flyme_source" revision="heroltexx"/>
-  <project path="devices/nx531j_cm" name="nian0114/flyme_source" revision="nx531j_cm"/>
+  <project path="devices/heroltexx" name="nian0114/flyme_source_n" revision="heroltexx"/>
+  <project path="devices/nx531j_cm" name="nian0114/flyme_source_n" revision="nx531j_cm"/>
   <project path="third-app" name="nian0114/flyme6_third-app" revision="nougat"/>
 </manifest>
