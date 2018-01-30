@@ -12,11 +12,11 @@ build_date=`date +%Y%m%d`
 
 THREAD=`sysctl hw.ncpu|cut -d" " -f2`
 
-source_dir="~/flyme6"
-out_dir="~/flyme/ROM"
-flyme_dir="~/flyme/FlymeOfficial"
-flyme_int_dir="/~/flyme/FlymeIntOfficial"
-ota_dir="~/flyme/OTA"
+source_dir="/Volumes/sources/flyme7"
+out_dir="/Users/Nian/Desktop/flyme7/ROM"
+flyme_dir="/Users/Nian/Desktop/flyme7/FlymeOfficial"
+flyme_int_dir="/Users/Nian/Desktop/flyme7/FlymeIntOfficial"
+ota_dir="/Users/Nian/Desktop/flyme6/OTA"
 devices_dir="${source_dir}/devices"
 
 function setVersion() {
@@ -49,46 +49,9 @@ function config(){
 		NUBIA_BASE=1
     SAM_BASE=0
     MIUI_BASE=0
-  #here is samsung base devices
-	elif [ $1 == "herolte" ]||[ $1 == "hero2qlte" ];then
-		SUPPORT_OTA=1
-		NO_THIRD=1
-		SUPPORT_LITTLERABBIT=1
-		CM_BASE=0
-		NUBIA_BASE=0
-		SAM_BASE=1
-    MIUI_BASE=0
-	elif [ $1 == "herolte_free" ]||[ $1 == "hero2qlte_free" ];then
-		SUPPORT_OTA=1
-		NO_THIRD=1
-		SUPPORT_LITTLERABBIT=0
-		CM_BASE=0
-		NUBIA_BASE=0
-		SAM_BASE=1
-    MIUI_BASE=0
-		FLYME_OFFICIAL=1
-  elif [ $1 == "zerolte" ];then
+	elif [ $1 == "nx531j_cm" ]||[ $1 == "heroltexx" ];then
 		SUPPORT_OTA=1
 		NO_THIRD=0
-		SUPPORT_LITTLERABBIT=0
-		CM_BASE=0
-		NUBIA_BASE=0
-		SAM_BASE=1
-    MIUI_BASE=0
-		FLYME_OFFICIAL=0
-  #here is miui base devices
-  elif [ $1 == "scorpio" ]||[ $1 == "capricorn_mi" ]||[ $1 == "natrium" ]||[ $1 == "lithium" ];then
-    SUPPORT_OTA=1
-    NO_THIRD=0
-    SUPPORT_LITTLERABBIT=0
-    CM_BASE=0
-    NUBIA_BASE=0
-    SAM_BASE=0
-    MIUI_BASE=1
-    FLYME_OFFICIA=0
-	elif [ $1 == "nx531j_cm" ];then
-		SUPPORT_OTA=1
-		NO_THIRD=1
 		SUPPORT_LITTLERABBIT=0
 		CM_BASE=1
 		NUBIA_BASE=0
@@ -117,21 +80,17 @@ function init(){
 	sed -i '/ro\.build\.version\.incremental/d' flyme/release/international/arm/SYSTEM/build.prop
 	echo "ro.build.version.incremental=${version}" >> flyme/release/chinese/arm/SYSTEM/build.prop
 	echo "ro.build.version.incremental=${version}" >> flyme/release/international/arm/SYSTEM/build.prop
-	cp -f third-app/ttotoo-app/Flyme_Camera/Camera.apk flyme/release/chinese/arm/SYSTEM/app/Camera/Camera.apk
-	cp -f third-app/ttotoo-app/Flyme_Camera/Camera.apk flyme/release/international/arm/SYSTEM/app/Camera/Camera.apk
 }
 
 function third(){
 	cd ${source_dir}
 	rm -rf devices/$1/overlay/system/priv-app
 	rm -rf devices/$1/overlay/data/app
-	mkdir -p devices/$1/overlay/system/priv-app devices/$1/overlay/data/app devices/$1/overlay/system/supersu
-	cp -rf third-app/supersu/* devices/$1/overlay/system/supersu
+	mkdir -p devices/$1/overlay/system/priv-app devices/$1/overlay/data/app
 
 	if [ ${NO_THIRD} != "1" ];then
 	    cp -rf third-app/app/* devices/$1/overlay/data/app/
 	    cp -rf third-app/priv-app/* devices/$1/overlay/system/priv-app/
-	    cp -rf third-app/ttotoo-app/FlymeCore devices/$1/overlay/system/priv-app/
 	fi
 
 	if [ ${SUPPORT_LITTLERABBIT} == "1" ];then
@@ -145,26 +104,8 @@ function third(){
 	    cp -rf third-app/ttotoo-app/LRSettings devices/$1/overlay/system/priv-app/
 	fi
 
-  if [ ${MIUI_BASE} == "1" ];then
-	    cp -rf third-app/ttotoo-app/Settings_ex devices/$1/overlay/system/priv-app/
-	fi
-
 	if [ ${NUBIA_BASE} == "1" ];then
-	    cp -rf third-app/ttotoo-app/Camera devices/$1/overlay/system/priv-app/
 			cp -rf third-app/ttotoo-app/StockSettings_Nubia devices/$1/overlay/system/priv-app/
-	fi
-
-	if [ ${SAM_BASE} == "1" ];then
-    cp -rf third-app/ttotoo-app/Telecom devices/$1/overlay/system/priv-app/
-    cp -rf third-app/ttotoo-app/Gallery devices/$1/overlay/system/priv-app/
-		if [ ${NO_THIRD} == "0" ];then
-			rm -rf devices/$1/overlay/system/supersu
-		else
-      if [ ${FLYME_OFFICIAL} == "0" ];then
-           cp -rf third-app/ttotoo-app/AppCenter devices/$1/overlay/system/app/
-           #cp -rf third-app/ttotoo-app/Mms devices/$1/overlay/system/priv-app/
-      fi
-		fi
 	fi
 	echo "<<< 添加推广完成！   "
 }
@@ -193,32 +134,18 @@ function clean(){
 
 function backup(){
 	cd ${source_dir}/devices/$1
-	git add -A
-	git commit -m "flyme upgrade"
 
-	if [ ${CM_BASE} == "1" ]||[ $1 == "herolte" ]||[ $1 == "capricorn_mi" ];then
+  git add -A
+  git commit -m "flyme upgrade"
+
+  if [ ${CM_BASE} == "1" ];then
 		flyme upgrade
     git add -A
     git commit -m "Update Flyme"
 	fi
-
-	if [ $1 == "nx531j_nubia" ]||[ $1 == "hero2qlte" ]||[ $1 == "herolte" ]||[ $1 == "scorpio" ];then
-		git push --all
-	fi
-
-	if [ $1 == "herolte_free" ]||[ $1 == "hero2qlte_free" ];then
-		git pull
-	fi
 }
 
 function fullota(){
-  if [ ${SAM_BASE} == "1" ]||[ ${MIUI_BASE} == "1" ];then
-    rm -rf ${source_dir}/tools/reverses/apktool.jar
-		ln -s ${source_dir}/tools/reverses/apktool_miui.jar ${source_dir}/tools/reverses/apktool.jar
-	else
-		rm -rf ${source_dir}/tools/reverses/apktool.jar
-		ln -s ${source_dir}/tools/reverses/apktool_newest.jar ${source_dir}/tools/reverses/apktool.jar
-	fi
 	cd ${source_dir}/devices/$1
 	echo ">>>  开始${THREAD}线程制作完整刷机包  ...     "
 
@@ -244,7 +171,7 @@ function fullota(){
 
 function ota(){
 	cd ${source_dir}/OTA
-  cp /mnt/cos/target_files/$1-target-files.zip ./$1-last-target-files.zip
+	mv $1-target-files.zip $1-last-target-files.zip
 	mv ../devices/$1/out/target_fil*.zip $1-target-files.zip
 	if [ ${SUPPORT_LITTLERABBIT} == "1" ];then
 		../build/tools/releasetools/ota_from_target_files.py -k ../build/security/testkey -i $1-last-target-files.zip $1-target-files.zip ${ota_dir}/$1/${version}/ota-$1-${version}.zip
@@ -253,20 +180,10 @@ function ota(){
 	else
 		../build/tools/releasetools/ota_from_target_files.py -k ../build/security/testkey -i $1-last-target-files.zip $1-target-files.zip ${out_dir}/${version}/$1/ota-$1-${version}.zip
 	fi
-  cd /mnt/cos/target_files
-  mv $1-target-files.zip $1-last-target-files.zip
-  mv ${source_dir}/OTA/$1-target-files.zip .
   cd ${source_dir}
 }
 
 function fullotaInt(){
-	if [ ${SAM_BASE} == "1" ]||[ ${MIUI_BASE} == "1" ];then
-    rm -rf ${source_dir}/tools/reverses/apktool.jar
-		ln -s ${source_dir}/tools/reverses/apktool_miui.jar ${source_dir}/tools/reverses/apktool.jar
-	else
-		rm -rf ${source_dir}/tools/reverses/apktool.jar
-		ln -s ${source_dir}/tools/reverses/apktool_newest.jar ${source_dir}/tools/reverses/apktool.jar
-	fi
 	cd ${source_dir}/devices/$1
   make clean
   rm -rf history_package last_target board
