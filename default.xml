@@ -10,8 +10,8 @@
            remote="origin"
            sync-j="4" />
 
-  <project path="build" name="nian0114/flyme6_build" revision="nougat-7.1" />
-  <project path="tools" name="nian0114/flyme6_tools" revision="nougat-7.1" />
+  <project path="build" name="nian0114/flyme6_build" revision="mac-n" />
+  <project path="tools" name="nian0114/flyme6_tools" revision="mac-n" />
   <project path="flyme/release" name="FlymeOS/flyme-release" sync-c="true" />
   <project path="flyme/overlay" name="FlymeOS/flyme-overlay" sync-c="true" />
   <project path="devices/base" name="FlymeOS/devices-base" sync-c="true" />
