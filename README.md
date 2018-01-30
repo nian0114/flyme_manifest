@@ -11,7 +11,7 @@
 
 开源项目的分支命名与Android版本对应,目前支持**Android 6.0**的机型适配，分支名为：`marshmallow-6.0`
 
-目录结构如下所示: 
+目录结构如下所示:
 
     FlymeOS
      +-- manifest           项目清单
@@ -30,16 +30,16 @@
 # 3. 代码下载
 
 通过repo init命令的-b参数, 选择需要下载的分支。
-通过repo sync命令同步远程代码: 
+通过repo sync命令同步远程代码:
 
-    $ repo init -u git@github.com:nian0114/flyme_manifest.git -b marshmallow-6.0
+    $ repo init -u git@github.com:nian0114/flyme_manifest.git -b nougat-7.1
     $ repo sync -c -j4
 
 如果连接一直失败或下载代码过慢，则使用以下命令:
 
     $ repo init --repo-url git://github.com/FlymeOS/repo.git \
                 -u git@github.com:nian0114/flyme_manifest.git \
-                -b marshmallow-6.0 --no-repo-verify
+                -b nougat-7.1 --no-repo-verify
     $ repo sync --no-clone-bundle -c -j4
 
 
@@ -47,7 +47,7 @@
 
 <b>* 标准流程</b>
 
-下载完代码以后, 在开源项目根目录, 执行以下命令初始化开发环境: 
+下载完代码以后, 在开源项目根目录, 执行以下命令初始化开发环境:
 
     $ source build/envsetup.sh
 
