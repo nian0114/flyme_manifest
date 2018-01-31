@@ -13,7 +13,7 @@ curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 chmod a+x ~/bin/repo
 PATH=~/bin:$PATH
 
-mkdir -p flyme6
-cd flyme6
-repo init -u https://github.com/nian0114/flyme_manifest.git -b marshmallow-6.0
+mkdir -p flyme7
+cd flyme7
+repo init -u https://github.com/nian0114/flyme_manifest.git -b nougat-7.1
 repo sync
