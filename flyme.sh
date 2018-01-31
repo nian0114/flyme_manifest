@@ -10,13 +10,13 @@ time=`date +%c`
 utc=`date +%s`
 build_date=`date +%Y%m%d`
 
-THREAD=`sysctl hw.ncpu|cut -d" " -f2`
+THREAD=8
 
-source_dir="/Volumes/sources/flyme7"
-out_dir="/Users/Nian/Desktop/flyme7/ROM"
-flyme_dir="/Users/Nian/Desktop/flyme7/FlymeOfficial"
-flyme_int_dir="/Users/Nian/Desktop/flyme7/FlymeIntOfficial"
-ota_dir="/Users/Nian/Desktop/flyme6/OTA"
+source_dir="/root/flyme7"
+out_dir="/root/flyme7/ROM"
+flyme_dir="/root/flyme7/FlymeOfficial"
+flyme_int_dir="/root/flyme7/FlymeIntOfficial"
+ota_dir="/root/flyme7/OTA"
 devices_dir="${source_dir}/devices"
 
 function setVersion() {
@@ -132,19 +132,6 @@ function clean(){
 	echo "<<< 缓存文件清理完成！   "
 }
 
-function backup(){
-	cd ${source_dir}/devices/$1
-
-  git add -A
-  git commit -m "flyme upgrade"
-
-  if [ ${CM_BASE} == "1" ];then
-		flyme upgrade
-    git add -A
-    git commit -m "Update Flyme"
-	fi
-}
-
 function fullota(){
 	cd ${source_dir}/devices/$1
 	echo ">>>  开始${THREAD}线程制作完整刷机包  ...     "
@@ -214,7 +201,6 @@ function fullotaInt(){
 
 function build(){
 	clean $1
-	backup $1
 	third $1
 	fullota $1
 	if [ ${SUPPORT_OTA} == "1" ];then
