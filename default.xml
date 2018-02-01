@@ -10,7 +10,13 @@
            remote="origin"
            sync-j="4" />
 
-  <project path="build" name="nian0114/flyme6_build" revision="mac-n" />
+  <project path="build" name="nian0114/flyme6_build" revision="mac-n" >
+        <copyfile src="cos.sh" dest="cos.sh" />
+        <copyfile src="env.sh" dest="env.sh" />
+        <copyfile src="flyme.sh" dest="flyme.sh" />
+        <copyfile src="stockrom.sh" dest="stockrom.sh" />
+        <copyfile src="sync.sh" dest="sync.sh" />
+  </project>
   <project path="tools" name="nian0114/flyme6_tools" revision="mac-n" />
   <project path="flyme/release" name="FlymeOS/flyme-release" sync-c="true" />
   <project path="flyme/overlay" name="FlymeOS/flyme-overlay" sync-c="true" />
