@@ -13,10 +13,10 @@ build_date=`date +%Y%m%d`
 THREAD=8
 
 source_dir="/root/flyme7"
-out_dir="/root/flyme7/ROM"
-flyme_dir="/root/flyme7/FlymeOfficial"
-flyme_int_dir="/root/flyme7/FlymeIntOfficial"
-ota_dir="/root/flyme7/OTA"
+out_dir="/var/www/html/flyme7/ROM"
+flyme_dir="/var/www/html/flyme7/FlymeOfficial"
+flyme_int_dir="/var/www/html/flyme7/FlymeIntOfficial"
+ota_dir="/var/www/html/flyme7/OTA"
 devices_dir="${source_dir}/devices"
 
 function setVersion() {
@@ -41,32 +41,41 @@ function config(){
   FLYME_INT_NEED=0
 
   #here is nubia base devices
-	if [ $1 == "nx531j_nubia" ];then
-		SUPPORT_OTA=1
-		NO_THIRD=1
-		SUPPORT_LITTLERABBIT=1
-		CM_BASE=0
-		NUBIA_BASE=1
-    SAM_BASE=0
-    MIUI_BASE=0
-	elif [ $1 == "nx531j_cm" ]||[ $1 == "heroltexx" ];then
-		SUPPORT_OTA=1
-		NO_THIRD=0
-		SUPPORT_LITTLERABBIT=0
-		CM_BASE=1
-		NUBIA_BASE=0
-		SAM_BASE=0
-    MIUI_BASE=0
-		FLYME_OFFICIAL=1
-  else
-		SUPPORT_OTA=1
-		NO_THIRD=0
-		SUPPORT_LITTLERABBIT=0
-		CM_BASE=1
-		NUBIA_BASE=0
-		SAM_BASE=0
-    MIUI_BASE=0
-	fi
+  if [ $1 == "nx531j_nubia" ];then
+  	SUPPORT_OTA=1
+	NO_THIRD=1
+	SUPPORT_LITTLERABBIT=1
+	CM_BASE=0
+	NUBIA_BASE=1
+	SAM_BASE=0
+	MIUI_BASE=0
+  elif [ $1 == "nx531j_cm" ];then
+	SUPPORT_OTA=1
+	NO_THIRD=1
+	SUPPORT_LITTLERABBIT=0
+	CM_BASE=1
+	NUBIA_BASE=0
+	SAM_BASE=0
+	MIUI_BASE=0
+	FLYME_OFFICIAL=1
+  elif [ $1 == "heroltexx" ];then
+	SUPPORT_OTA=1
+	NO_THIRD=0
+	SUPPORT_LITTLERABBIT=0
+	CM_BASE=1
+	NUBIA_BASE=0
+	SAM_BASE=0
+	MIUI_BASE=0
+	FLYME_OFFICIAL=1
+    else
+	SUPPORT_OTA=1
+	NO_THIRD=0
+	SUPPORT_LITTLERABBIT=0
+	CM_BASE=1
+	NUBIA_BASE=0
+	SAM_BASE=0
+	MIUI_BASE=0
+  fi
 }
 
 function init(){
