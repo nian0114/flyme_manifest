@@ -1,3 +1,5 @@
-wget -c  'https://myriohondo-my.sharepoint.com/:u:/g/personal/elvera_nielson9906_my_riohondo_edu/EVAURnAr4rBOtm2HLfbm-hkBqBk7eGvUoRrjbTZcCEE4hQ?e=H4REaZ' -O ./heroltexx-vendor.tar
+wget -c  'https://flyme6-1255331134.cos.ap-shanghai.myqcloud.com/stockrom/n/heroltexx-vendor.tar' -O ./heroltexx-vendor.tar
 
-wget -c  'https://myriohondo-my.sharepoint.com/:u:/g/personal/elvera_nielson9906_my_riohondo_edu/EaddFfZ269RLg7hgH0lOtKMBmgpcEsZA3qfajv5SC31dpA?e=oGP8Fx' -O ./nx531j_cm-vendor.tar
+wget -c  'https://flyme6-1255331134.cos.ap-shanghai.myqcloud.com/stockrom/n/nx531j_cm-vendor.tar' -O ./nx531j_cm-vendor.tar
+
+wget -c  'https://flyme6-1255331134.cos.ap-shanghai.myqcloud.com/stockrom/n/nx531j_nubia-vendor.tar' -O ./nx531j_nubia-vendor.tar
