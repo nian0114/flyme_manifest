@@ -17,6 +17,7 @@ out_dir="/var/www/html/flyme7/ROM"
 flyme_dir="/var/www/html/flyme7/FlymeOfficial"
 flyme_int_dir="/var/www/html/flyme7/FlymeIntOfficial"
 ota_dir="/var/www/html/flyme7/OTA"
+target_dir="/var/www/html/flyme7/target_files"
 devices_dir="${source_dir}/devices"
 
 function setVersion() {
@@ -124,6 +125,7 @@ function clean(){
 	cd ${source_dir}/devices/$1
 	make clean
 	rm -rf history_package last_target board
+	mdkir -p ${target_dir}
 
   if [ ${SUPPORT_LITTLERABBIT} == "1" ];then
     mkdir -p ${out_dir}/${version}/$1
@@ -166,17 +168,16 @@ function fullota(){
 }
 
 function ota(){
-	cd ${source_dir}/OTA
-	mv $1-target-files.zip $1-last-target-files.zip
-	mv ../devices/$1/out/target_fil*.zip $1-target-files.zip
+	cd ${source_dir}
+	mv ${target_dir}/$1-target-files.zip ${target_dir}/$1-last-target-files.zip
+	mv ${source_dir}/devices/$1/out/target_fil*.zip ${target_dir}/$1-target-files.zip
 	if [ ${SUPPORT_LITTLERABBIT} == "1" ];then
-		../build/tools/releasetools/ota_from_target_files.py -k ../build/security/testkey -i $1-last-target-files.zip $1-target-files.zip ${ota_dir}/$1/${version}/ota-$1-${version}.zip
-  elif [ ${FLYME_OFFICIAL} == "1" ];then
-    ../build/tools/releasetools/ota_from_target_files.py -k ../build/security/testkey -i $1-last-target-files.zip $1-target-files.zip ${flyme_dir}/${version}/$1/ota-$1-${version}.zip
+		./build/tools/releasetools/ota_from_target_files.py -k ./build/security/testkey -i ${target_dir}/$1-last-target-files.zip ${target_dir}/$1-target-files.zip ${ota_dir}/$1/${version}/ota-$1-${version}.zip
+	elif [ ${FLYME_OFFICIAL} == "1" ];then
+                ./build/tools/releasetools/ota_from_target_files.py -k ./build/security/testkey -i ${target_dir}/$1-last-target-files.zip ${target_dir}/$1-target-files.zip ${flyme_dir}/${version}/$1/ota-$1-${version}.zip
 	else
-		../build/tools/releasetools/ota_from_target_files.py -k ../build/security/testkey -i $1-last-target-files.zip $1-target-files.zip ${out_dir}/${version}/$1/ota-$1-${version}.zip
+		./build/tools/releasetools/ota_from_target_files.py -k ./build/security/testkey -i ${target_dir}/$1-last-target-files.zip ${target_dir}/$1-target-files.zip ${out_dir}/${version}/$1/ota-$1-${version}.zip
 	fi
-  cd ${source_dir}
 }
 
 function fullotaInt(){
