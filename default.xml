@@ -23,5 +23,6 @@
   <project path="devices/base" name="FlymeOS/devices-base" sync-c="true" />
   <project path="devices/heroltexx" name="nian0114/flyme_source_n" revision="heroltexx"/>
   <project path="devices/nx531j_cm" name="nian0114/flyme_source_n" revision="nx531j_cm"/>
+  <project path="devices/nx531j_nubia" name="nian0114/flyme_source_n" revision="nx531j_nubia"/>
   <project path="third-app" name="nian0114/flyme6_third-app" revision="nougat"/>
 </manifest>
