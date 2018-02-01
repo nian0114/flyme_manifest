@@ -125,7 +125,7 @@ function clean(){
 	cd ${source_dir}/devices/$1
 	make clean
 	rm -rf history_package last_target board
-	mdkir -p ${target_dir}
+	mkdir -p ${target_dir}
 
   if [ ${SUPPORT_LITTLERABBIT} == "1" ];then
     mkdir -p ${out_dir}/${version}/$1
