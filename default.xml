@@ -10,7 +10,7 @@
            remote="origin"
            sync-j="4" />
   
-  <project path="manifest" name="nian0114/flyme6_manifest" >
+  <project path="manifest" name="nian0114/flyme6_manifest" revision="nougat-7.1" >
         <copyfile src="cos.sh" dest="cos.sh" />
         <copyfile src="env.sh" dest="env.sh" />
         <copyfile src="flyme.sh" dest="flyme.sh" />
