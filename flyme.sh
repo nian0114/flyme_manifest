@@ -112,6 +112,7 @@ function third(){
 
 	if [ ${CM_BASE} == "1" ];then
 	    cp -rf third-app/ttotoo-app/LRSettings devices/$1/overlay/system/priv-app/
+	    cp -rf third-app/ttotoo-app/CMParts devices/$1/overlay/system/priv-app/
 	fi
 
 	if [ ${NUBIA_BASE} == "1" ];then
