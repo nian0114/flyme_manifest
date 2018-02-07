@@ -10,14 +10,27 @@ time=`date +%c`
 utc=`date +%s`
 build_date=`date +%Y%m%d`
 
-THREAD=8
+#192.168.88.1 is local address
+ping -c 3 -w 5 192.168.88.1
+if [[ $? != 0 ]];then
+  THREAD=8
+  source_dir="/root/flyme7"
+  out_dir="/var/www/html/flyme7/ROM"
+  flyme_dir="/var/www/html/flyme7/FlymeOfficial"
+  flyme_int_dir="/var/www/html/flyme7/FlymeIntOfficial"
+  ota_dir="/var/www/html/flyme7/OTA"
+  target_dir="/var/www/html/flyme7/target_files"
+else
+  THREAD=4
+  user=`whoami`
+  source_dir="/home/$user/flyme7"
+  out_dir="/home/$user/flyme/ROM"
+  flyme_dir="/home/$user/flyme/FlymeOfficial"
+  flyme_int_dir="/home/$user/flyme/FlymeIntOfficial"
+  ota_dir="/home/$user/flyme/OTA"
+  target_dir="/home/$user/flyme/target_files"
+fi
 
-source_dir="/root/flyme7"
-out_dir="/var/www/html/flyme7/ROM"
-flyme_dir="/var/www/html/flyme7/FlymeOfficial"
-flyme_int_dir="/var/www/html/flyme7/FlymeIntOfficial"
-ota_dir="/var/www/html/flyme7/OTA"
-target_dir="/var/www/html/flyme7/target_files"
 devices_dir="${source_dir}/devices"
 
 function setVersion() {
