@@ -114,6 +114,14 @@ function third(){
 	if [ ${NO_THIRD} != "1" ];then
 	    cp -rf third-app/app/* devices/$1/overlay/data/app/
 	    cp -rf third-app/priv-app/* devices/$1/overlay/system/priv-app/
+	    if [ ${CM_BASE} == "1" ];then
+	        cp -rf third-app/ttotoo-app/LRSettings_free devices/$1/overlay/system/priv-app/
+	    fi	
+	else
+	    if [ ${CM_BASE} == "1" ];then
+	        cp -rf third-app/ttotoo-app/LRSettings devices/$1/overlay/system/priv-app/
+		cp -rf third-app/ttotoo-app/CMParts devices/$1/overlay/system/priv-app/
+	    fi
 	fi
 
 	if [ ${SUPPORT_LITTLERABBIT} == "1" ];then
@@ -122,15 +130,7 @@ function third(){
              cp -rf third-app/ttotoo-app/FlymeUpdater devices/$1/overlay/system/priv-app/
           fi
 	fi
-
-	if [ ${CM_BASE} == "1" ];then
-	    cp -rf third-app/ttotoo-app/LRSettings devices/$1/overlay/system/priv-app/
-	    cp -rf third-app/ttotoo-app/CMParts devices/$1/overlay/system/priv-app/
-	fi
-
-	if [ ${NUBIA_BASE} == "1" ];then
-			cp -rf third-app/ttotoo-app/StockSettings_Nubia devices/$1/overlay/system/priv-app/
-	fi
+	
 	echo "<<< 添加推广完成！   "
 }
 
