@@ -12,4 +12,4 @@ untar nx531j_cm
 untar nx531j_nubia
 
 sed -i -e "s/ro\.product\.model=.*/ro\.product\.model=SM-G9350/g" $source_dir/devices/heroltexx/vendor/system/build.prop
-sed -i -e "s/ro\.product\.device=.*/ro\.product\.device=hero2qlte/g" $source_dir/devices/heroltexx/vendor/system/build.prop
+sed -i -e "s/ro\.product\.device=.*/ro\.product\.device=hero2qltechn/g" $source_dir/devices/heroltexx/vendor/system/build.prop
