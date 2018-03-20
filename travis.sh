@@ -13,9 +13,9 @@ build_date=`date +%Y%m%d`
 
 THREAD=2
 user=`whoami`
-source_dir="/home/$user"
-flyme_dir="/home/$user/flyme/ROM"
-target_dir="/home/$user/flyme/target_files"
+source_dir="/home/$user/build/nian0114"
+flyme_dir="/home/$user/build/nian0114/flyme/ROM"
+target_dir="/home/$user/build/nian0114/flyme/target_files"
 
 devices_dir="${source_dir}/devices"
 
