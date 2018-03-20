@@ -171,6 +171,7 @@ function download(){
 }
 
 function qshell(){
+        chmod a+x qshell
 	./qshell account ${QINIU_AK} ${QINIU_SK}
         ./qshell delete ttotoo-addons-south $1-last-target-files.zip
         ./qshell rput ttotoo-addons-south $1-last-target-files.zip ${target_dir}/$1-target-files.zip
