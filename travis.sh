@@ -16,6 +16,7 @@ user=`whoami`
 source_dir="/home/$user/build/nian0114"
 flyme_dir="/home/$user/build/nian0114/flyme/ROM"
 target_dir="/home/$user/build/nian0114/flyme/target_files"
+upload_bucket="ttotoo-addons-south"
 
 devices_dir="${source_dir}/devices"
 
@@ -25,7 +26,7 @@ function setVersion() {
   ls $out_dir
   export version=$z$y
   sed -i "s/Flyme\ 6.*R/Flyme\ 6.${version}R/g" flyme/release/chinese/arm/SYSTEM/build.prop
-  sed -i "s/Flyme\ 6.*R/Flyme\ 6.${version}R/g" flyme/release/international/arm/SYSTEM/build.prop 
+  sed -i "s/Flyme\ 6.*R/Flyme\ 6.${version}R/g" flyme/release/international/arm/SYSTEM/build.prop
   clear
 }
 
@@ -94,7 +95,7 @@ function third(){
 	    cp -rf third-app/priv-app/* devices/$1/overlay/system/priv-app/
 	    if [ ${CM_BASE} == "1" ];then
 	        cp -rf third-app/ttotoo-app/LRSettings_free devices/$1/overlay/system/priv-app/
-	    fi	
+	    fi
 	else
 	    if [ ${CM_BASE} == "1" ];then
 	        cp -rf third-app/ttotoo-app/LRSettings devices/$1/overlay/system/priv-app/
@@ -108,7 +109,7 @@ function third(){
              cp -rf third-app/ttotoo-app/FlymeUpdater devices/$1/overlay/system/priv-app/
           fi
 	fi
-	
+
 	echo "<<< 添加推广完成！   "
 }
 
@@ -173,8 +174,16 @@ function download(){
 function qshell(){
         chmod a+x qshell
 	./qshell account ${QINIU_AK} ${QINIU_SK}
-        ./qshell delete ttotoo-addons-south $1-last-target-files.zip
-        ./qshell rput ttotoo-addons-south $1-last-target-files.zip ${target_dir}/$1-target-files.zip
+
+  echo """{
+      \"src_dir\" : \"/home/travis/build/nian0114/flyme/ROM/\",
+      \"ignore_dir\" : true,
+      \"bucket\" : \"${upload_bucket}\"
+  }""" > /home/travis/build/nian0114/config.json
+
+        ./qshell delete ${upload_bucket} $1-last-target-files.zip
+        ./qshell rput ${upload_bucket} $1-last-target-files.zip ${target_dir}/$1-target-files.zip
+        ./qshell qupload 10 /home/travis/build/nian0114/config.json
 }
 
 init
